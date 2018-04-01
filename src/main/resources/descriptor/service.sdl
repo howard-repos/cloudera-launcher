@@ -1,0 +1,42 @@
+{
+  "name": "LAUNCHER",
+  "label": "program launcher",
+  "description": "在cloudera manager中启动应用程序",
+  "version": "1.0.0",
+  "runAs": {
+    "user": "root",
+    "group": "root"
+  },
+  "icon": "images/icon.png",
+  "parameters": [
+    {
+      "name": "run_user",
+      "label": "run_user",
+      "description": "运行命令的用户",
+      "configurableInWizard": true,
+      "type": "string",
+      "default" : "root"
+    },
+    {
+      "name": "command",
+      "label": "command",
+      "description": "需要运行的命令",
+      "configurableInWizard": true,
+      "type": "string"
+    }
+  ],
+  "roles": [
+    {
+      "name": "LAUNCHER",
+      "label": "launcher",
+      "pluralLabel": "launchers",
+      "startRunner": {
+        "program": "scripts/control.sh",
+        "args": [
+          "${run_user}",
+          "${command}"
+        ]
+      }
+    }
+  ]
+}
