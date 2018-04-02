@@ -2,7 +2,7 @@
   "name": "LAUNCHER",
   "label": "program launcher",
   "description": "在cloudera manager中启动应用程序",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "runAs": {
     "user": "root",
     "group": "root"
@@ -20,7 +20,7 @@
     {
       "name": "command",
       "label": "command",
-      "description": "需要运行的命令",
+      "description": "需要运行的命令,注意:最后一个命令需要使用exec,并且在前台运行",
       "configurableInWizard": true,
       "type": "string"
     }
