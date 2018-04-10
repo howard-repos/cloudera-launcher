@@ -2,7 +2,7 @@
   "name": "LAUNCHER",
   "label": "program launcher",
   "description": "在cloudera manager中启动应用程序",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "runAs": {
     "user": "root",
     "group": "root"
@@ -17,10 +17,18 @@
       "type": "string",
       "default" : "root"
     },
+	{
+      "name": "work_dir",
+      "label": "work_dir",
+      "description": "运行命令的路径",
+      "configurableInWizard": true,
+      "type": "string",
+      "default" : "/tmp"
+    },
     {
       "name": "command",
       "label": "command",
-      "description": "需要运行的命令,注意:最后一个命令需要使用exec,并且在前台运行",
+      "description": "需要运行的命令",
       "configurableInWizard": true,
       "type": "string"
     }
@@ -34,6 +42,7 @@
         "program": "scripts/control.sh",
         "args": [
           "${run_user}",
+		  "${work_dir}",
           "${command}"
         ]
       }
